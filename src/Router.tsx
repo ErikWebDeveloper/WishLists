@@ -9,6 +9,7 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/Login";
 import ListPage from "./pages/ListPage";
 import WishPage from "./pages/WishPage";
+import SharedWishPage from "./pages/SharedLists";
 
 export default function AppRouter() {
   return (
@@ -16,6 +17,7 @@ export default function AppRouter() {
       <BrowserRouter>
         <Routes>
           <Route index element={<LandingPage />} />
+          <Route path="/shared/:listId" element={<SharedWishPage />} />
           <Route
             path="/login"
             element={

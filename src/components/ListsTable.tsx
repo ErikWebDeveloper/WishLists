@@ -11,6 +11,8 @@ import { Tag, Tooltip, Flex, Button, List, Typography } from "antd";
 import { getDomain } from "../utils/domain";
 
 const URL = "/list";
+const URL_SHARED = "/shared";
+
 
 const actionStyle = { opacity: 0.7 };
 
@@ -117,7 +119,7 @@ export default function ListTable({
                 <ShareAltOutlined /> Share URL
               </Typography.Paragraph>
               <Typography.Paragraph type="secondary" copyable>
-                {`https://${getDomain()}/list/${item.id}`}
+                {`https://${getDomain()}${URL_SHARED}/${item.id}`}
               </Typography.Paragraph>
             </>
           )}

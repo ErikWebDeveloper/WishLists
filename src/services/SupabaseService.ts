@@ -5,6 +5,7 @@ export class SupabaseService implements ILocalStorageService {
     const { data, error } = await supabase
       .from("lists")
       .select("*")
+      .eq("user_id", (await supabase.auth.getUser()).data.user?.id)
       .order("created_at", { ascending: false });
 
     if (error) throw new Error(error.message);
