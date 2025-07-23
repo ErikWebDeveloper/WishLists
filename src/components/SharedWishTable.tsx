@@ -2,8 +2,9 @@ import {
   GiftOutlined,
   HeartOutlined,
   DatabaseOutlined,
+  LinkOutlined,
 } from "@ant-design/icons";
-import { List, Rate, Typography, Tag } from "antd";
+import { List, Rate, Typography, Tag, Button, Tooltip } from "antd";
 import ModalLink from "./ModalLink";
 import { useState } from "react";
 
@@ -79,13 +80,28 @@ export default function SharedWishTable({ loading, data, listName }: Props) {
                 )
               }
             />
-
-            <Rate
-              character={<HeartOutlined />}
-              allowHalf
-              value={item.hope}
-              disabled
-            />
+            <div style={{display: "flex", alignItems: "center"}}>
+              <Rate
+              style={{flex: 1}}
+                character={<HeartOutlined />}
+                allowHalf
+                value={item.hope}
+                disabled
+              />
+              <Tooltip title="Go to wish link">
+                <Button
+                  disabled={item.url ? false : true}
+                  variant="link"
+                  color="primary"
+                  onClick={() => {
+                    setUrl(item.url || ""), setShow(true);
+                  }}
+                  icon={<LinkOutlined key={"link"} />}
+                >
+                  Go to link
+                </Button>
+              </Tooltip>
+            </div>
           </List.Item>
         )}
       />
