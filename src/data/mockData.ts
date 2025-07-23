@@ -1,0 +1,83 @@
+export const mockLists: List[] = [
+  {
+    id: "list-1",
+    name: "Birthday Gifts 🎂",
+    description: "Things I'd love for my birthday this year.",
+    items: 5,
+    createdAt: new Date("2025-05-01"),
+    is_public: true,
+  },
+  {
+    id: "list-2",
+    name: "Books to Read 📚",
+    description: "A collection of must-read novels and nonfiction.",
+    items: 5,
+    createdAt: new Date("2025-03-15"),
+    is_public: false,
+  },
+  {
+    id: "list-3",
+    name: "Home Office Setup 💻",
+    description: "Wishlist for upgrading my work-from-home space.",
+    items: 5,
+    createdAt: new Date("2025-04-10"),
+    is_public: true,
+  },
+  {
+    id: "list-4",
+    name: "Travel Essentials ✈️",
+    description: "Gear and gadgets for my upcoming trips.",
+    items: 5,
+    createdAt: new Date("2025-02-20"),
+    is_public: false,
+  },
+  {
+    id: "list-5",
+    name: "Guitar Gear 🎸",
+    description: "Pedals, strings, and other guitar accessories.",
+    items: 5,
+    createdAt: new Date("2025-01-05"),
+    is_public: true,
+  },
+];
+
+export const mockWishes: Wish[] = [
+  {
+    id: "wish-1",
+    listId: "list-1",
+    name: "Smartwatch",
+    url: "https://example.com/smartwatch",
+    description: "A sleek and modern watch with health tracking.",
+    hope: 4.8,
+  },
+  {
+    id: "wish-2",
+    listId: "list-2",
+    name: "Atomic Habits",
+    url: "https://example.com/atomic-habits",
+    description: "A book about building good habits and breaking bad ones.",
+    hope: 4.5,
+  },
+  {
+    id: "wish-3",
+    listId: "list-3",
+    name: "Standing Desk",
+    description: "Adjustable desk for ergonomic comfort.",
+    hope: 4.9,
+  },
+  {
+    id: "wish-4",
+    listId: "list-4",
+    name: "Travel Backpack",
+    url: "https://example.com/backpack",
+    description: "Durable, waterproof, and lightweight.",
+    hope: 4.3,
+  },
+  {
+    id: "wish-5",
+    listId: "list-5",
+    name: "Tube Screamer Pedal",
+    description: "Classic overdrive for blues and rock tones.",
+    hope: 5.0,
+  },
+];

@@ -1,0 +1,33 @@
+.list-section {
+  margin: 0 auto;
+  width: 95%;
+  max-width: 1000px;
+}
+
+.ant-list-item-action {
+  text-align: end !important;
+}
+
+.share-btn {
+  margin-top: 1rem;
+  width: fit-content;
+}
+
+.card-3d {
+  display: inline-block;
+  perspective: 1000px;
+  opacity: 0.5;
+}
+
+.card-image {
+  max-width: 80%;
+  height: auto;
+  filter: brightness(0.8);
+  transition: transform 0.2s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card-3d:hover .card-image {
+  transform: rotateY(10deg) rotateX(10deg);
+}
