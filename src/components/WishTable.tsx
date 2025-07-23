@@ -130,7 +130,12 @@ export default function WishTable({
             ]}
           >
             <List.Item.Meta
-              title={<strong style={{ fontSize: "24px" }}>{item.name}</strong>}
+              title={
+                <div style={{display: "flex", flexDirection: "column", gap: "1rem"}}>
+                  {item.image_url && <img src={item.image_url} width={150} style={{borderRadius: "5px"}}/>}
+                  <strong style={{ fontSize: "24px" }}>{item.name}</strong>
+                </div>
+              }
               description={
                 item.description ? (
                   item.description

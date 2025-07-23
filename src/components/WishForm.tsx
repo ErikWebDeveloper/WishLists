@@ -29,6 +29,10 @@ export default function WishForm({
         <Input placeholder="Hope birthday gifs" />
       </Form.Item>
 
+      <Form.Item name={["wish", "image_url"]} label="Image URL">
+        <Input placeholder="https://amazon-image-example.com/..." />
+      </Form.Item>
+
       <Form.Item
         name={["wish", "hope"]}
         label="Hope"

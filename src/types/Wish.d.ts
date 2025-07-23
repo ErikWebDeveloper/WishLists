@@ -6,6 +6,7 @@ type Wish = {
   description?: string;
   price?: number;
   hope: number;
+  image_url?: string;
 };
 
 type Wishes = Array<Wish>;
