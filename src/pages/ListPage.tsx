@@ -5,7 +5,7 @@ import { FormOutlined } from "@ant-design/icons";
 import { Layout, Drawer, Form, FloatButton, Tooltip, message } from "antd";
 import ListForm from "../components/ListForm";
 import ListTable from "../components/ListsTable";
-import AppNavbar from "../layouts/AppNavbar";
+//import AppNavbar from "../layouts/AppNavbar";
 //import mockLists from "../utils/mockList";
 //import { mockLists } from "../data/mockData";
 

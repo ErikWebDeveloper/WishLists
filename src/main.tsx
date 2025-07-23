@@ -15,9 +15,7 @@ const updateSW = registerSW({
       content: "A new version is available. Do you want to update now?",
       okText: "Update",
       cancelText: "Later",
-      onOk() {
-        updateSW(true); // fuerza recarga
-      },
+      onOk: () => updateSW && updateSW(),
     });
   },
   onOfflineReady() {

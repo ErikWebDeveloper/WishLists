@@ -95,13 +95,13 @@ export class SupabaseService implements ILocalStorageService {
   }
 
   async addWish(wish: Wish): Promise<Wish> {
-    const newWish = {
-      ...wish,
-      hope: wish.hope || 0,
-      list_id: wish.listId,
-    };
+    const { listId, ...rest } = wish;
 
-    delete newWish.listId;
+    const newWish: Omit<Wish, "listId"> & { hope: number; list_id: string } = {
+      ...rest,
+      hope: wish.hope || 0,
+      list_id: listId,
+    };
 
     const { data, error } = await supabase
       .from("wishes")

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { LocalStorageService } from "../services/LocalStorageService";
+//import { LocalStorageService } from "../services/LocalStorageService";
 import { SupabaseService } from "../services/SupabaseService";
 
 import delay from "../utils/delay";
