@@ -1,69 +1,96 @@
-# React + TypeScript + Vite
+# 🎁 WishLists
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+WishLists es una aplicación web moderna para crear, compartir y organizar listas de deseos de forma sencilla y visual. Ideal para cumpleaños, eventos, compras personales o colaborativas.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚡ [Vite](https://vitejs.dev/) – Bundler ultrarrápido para desarrollo moderno
+- ⚛️ [React](https://reactjs.org/) – Librería de UI declarativa
+- ✨ [TypeScript](https://www.typescriptlang.org/) – Tipado estático para mayor seguridad
+- 🎨 [Ant Design](https://ant.design/) – Sistema de diseño con componentes elegantes
+- 🧰 [Supabase](https://supabase.com/) – Backend como servicio (auth, base de datos, almacenamiento)
 
-## Expanding the ESLint configuration
+## 🖼️ Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 📋 Crear múltiples listas de deseos personalizadas
+- 🎨 Agregar imágenes, descripciones, orden personalizado y favoritos
+- 🔐 Autenticación de usuarios (registro, login, logout)
+- 🔗 Compartir listas públicas mediante enlaces
+- ✏️ Edición de listas e ítems en tiempo real
+- ☁️ Datos sincronizados automáticamente con Supabase
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Instalación
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Clonar el repositorio**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/tuusuario/wishlists.git
+cd wishlists
+````
+
+2. **Instalar dependencias**
+
+```bash
+npm install
+# o
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. **Configurar variables de entorno**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Crea un archivo `.env` en la raíz con tus claves de Supabase:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_SUPABASE_URL=https://xxxx.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
 ```
+
+4. **Iniciar el servidor de desarrollo**
+
+```bash
+npm run dev
+```
+
+## 🧪 Scripts disponibles
+
+| Comando           | Descripción                                  |
+| ----------------- | -------------------------------------------- |
+| `npm run dev`     | Inicia el servidor de desarrollo             |
+| `npm run build`   | Genera la versión de producción              |
+| `npm run preview` | Previsualiza la app en producción localmente |
+| `npm run lint`    | Ejecuta el linter de TypeScript              |
+
+## 🖼️ Capturas
+
+<p align="center">
+  <img src="/public/Screenshoot.png" alt="Wishlist preview" width="600" />
+</p>
+
+
+## 📁 Estructura del Proyecto
+
+```bash
+src/
+│
+├── components/       # Componentes reutilizables
+├── context/          # Context API (Auth, Listas, etc.)
+├── hooks/            # Custom hooks
+├── pages/            # Páginas principales
+├── services/         # Supabase y otras APIs
+├── types/            # Tipos de TypeScript
+└── utils/            # Funciones auxiliares
+```
+
+## 👤 Autor
+
+* [Erik Firmino](https://erikwebdeveloper.github.io/) – Desarrollador Full Stack
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia [MIT](LICENSE).
+
+---
+
+> ¿Tienes ideas para mejorar WishLists? ¡Abre un issue o contribuye con un PR!
+
+
