@@ -10,6 +10,7 @@ import {
 import { Tooltip, Button, List, Rate, Typography, Tag } from "antd";
 import ModalLink from "./ModalLink";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   loading: boolean;
@@ -20,6 +21,7 @@ type Props = {
   onEdit: (wish: Wish) => void;
 };
 
+const URL_HOME_APP = "/list";
 export default function WishTable({
   loading,
   loadingCRUD,
@@ -30,6 +32,7 @@ export default function WishTable({
 }: Props) {
   const [show, setShow] = useState(false);
   const [url, setUrl] = useState("");
+  const navigate = useNavigate();
 
   const handleOk = () => {
     window.open(url, "_blank", "noopener,noreferrer");
@@ -60,7 +63,10 @@ export default function WishTable({
             >
               <Button
                 icon={<ArrowLeftOutlined />}
-                style={{ marginRight: "1rem" }}
+                style={{ marginRight: "1rem", aspectRatio: "1/1" }}
+                onClick={() => {
+                  navigate(URL_HOME_APP);
+                }}
               />{" "}
               {!loading ? listName : "Loading ..."}
             </Typography.Title>
