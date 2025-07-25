@@ -2,12 +2,10 @@ import { useState, useEffect } from "react";
 
 // Components
 import { FormOutlined } from "@ant-design/icons";
-import { Layout, Drawer, Form, FloatButton, Tooltip, message } from "antd";
+import { Drawer, Form, FloatButton, Tooltip, message } from "antd";
+
 import ListForm from "../components/ListForm";
 import ListTable from "../components/ListsTable";
-//import AppNavbar from "../layouts/AppNavbar";
-//import mockLists from "../utils/mockList";
-//import { mockLists } from "../data/mockData";
 
 // Hooks
 import { useLists } from "../hooks/useLists";
@@ -23,8 +21,6 @@ export default function ListPage() {
     deleteList,
     updateList,
   } = useLists();
-
-  //const lists = mockLists;
 
   const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
@@ -76,7 +72,7 @@ export default function ListPage() {
   }, [error]);
 
   return (
-    <Layout style={{ minHeight: "100vh", paddingTop: "1rem" }}>
+    <>
       {contextHolder}
       {/** Float Button  */}
       <Tooltip title="Create a new wish list">
@@ -114,6 +110,6 @@ export default function ListPage() {
           onLoad={loadingCRUD}
         />
       </Drawer>
-    </Layout>
+    </>
   );
 }

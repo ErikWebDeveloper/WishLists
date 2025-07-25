@@ -3,17 +3,20 @@ import {
   EditOutlined,
   DeleteOutlined,
   GiftOutlined,
-  DatabaseOutlined,
-  FormOutlined,
-  ShareAltOutlined,
-  ArrowLeftOutlined,
+  CopyOutlined,
+  FormOutlined
 } from "@ant-design/icons";
-import { Tag, Tooltip, Flex, Button, List, Typography } from "antd";
+import { Tag, Tooltip, Button, List, Space, message } from "antd";
+
+// Layout
+import { EmpyText, Header, ItemTitle } from "../layouts/TableLayout";
+
+// Utils
 import { getDomain } from "../utils/domain";
 
 const URL = "/list";
 const URL_SHARED = "/shared";
-const URL_HOME_APP = "/dashboard";
+const URL_BACK = "/dashboard";
 
 const actionStyle = { opacity: 0.7 };
 
@@ -34,47 +37,34 @@ export default function ListTable({
 }: Props) {
   const navigate = useNavigate();
 
+  function handleCopy(text: string, label: string) {
+    navigator.clipboard.writeText(text).then(() => {
+      message.success(`${label} copied to clipboard`);
+    });
+  }
+
   return (
     <List
-      loading={loading}
-      header={
-        <header style={{ display: "flex", alignItems: "center", opacity: 0.5 }}>
-          <Typography.Title
-            style={{ flex: 1, display: "flex", alignItems: "center" }}
-            level={2}
-          >
-            <Button
-              icon={<ArrowLeftOutlined />}
-              style={{ marginRight: "1rem", aspectRatio: "1/1" }}
-              onClick={() => {
-                navigate(URL_HOME_APP);
-              }}
-            />{" "}
-            {!loading ? "Your wish lists" : "Loading ..."}
-          </Typography.Title>
-
-          <Tag>{data.length}</Tag>
-        </header>
-      }
       itemLayout="vertical"
+      loading={loading}
       dataSource={data}
+      header={
+        <Header
+          title={!loading ? "Your wish lists" : "Loading ..."}
+          url_back={URL_BACK}
+          tag={data.length.toString()}
+        />
+      }
       locale={{
         emptyText: (
-          <div className="list-empty">
-            <h1>
-              <DatabaseOutlined />
-            </h1>
-            <p>No lists found</p>
-            <h3>
-              Start creating your first list by clicking the button{" "}
-              <FormOutlined />.
-            </h3>
-          </div>
+          <EmpyText
+            title="No wishes found"
+            subtitle={<>Start creating your lists by clicking the <FormOutlined/> button.</>}
+          />
         ),
       }}
       renderItem={(item) => (
         <List.Item
-          style={{ padding: "1.5em" }}
           actions={[
             <Tooltip title="Add wishes">
               <Button
@@ -107,19 +97,14 @@ export default function ListTable({
         >
           <List.Item.Meta
             title={
-              <Flex
-                align="center"
-                onClick={() => {
-                  navigate(`${URL}/${item.id}`);
-                }}
-              >
-                <Typography.Title level={3} style={{ flex: 1 }}>
-                  {item.name}
-                </Typography.Title>
-                <Tag style={{ opacity: 0.5 }}>
-                  <GiftOutlined /> {item.items} items
-                </Tag>
-              </Flex>
+              <ItemTitle
+                title={item.name}
+                tag={
+                  <>
+                    <GiftOutlined /> {item.items} items
+                  </>
+                }
+              />
             }
             description={
               item.description ? (
@@ -130,14 +115,30 @@ export default function ListTable({
             }
           />
           {item.is_public && (
-            <>
-              <Typography.Paragraph className="share-btn">
-                <ShareAltOutlined /> Share URL
-              </Typography.Paragraph>
-              <Typography.Paragraph type="secondary" copyable>
-                {`https://${getDomain()}${URL_SHARED}/${item.id}`}
-              </Typography.Paragraph>
-            </>
+            <div className="mb-3">
+              <Space direction="horizontal">
+                <Button
+                  size="small"
+                  icon={<CopyOutlined />}
+                  onClick={() =>
+                    handleCopy(
+                      `https://${getDomain()}${URL_SHARED}/${item.id}`,
+                      "URL"
+                    )
+                  }
+                >
+                  Copy Share URL
+                </Button>
+
+                <Button
+                  size="small"
+                  icon={<CopyOutlined />}
+                  onClick={() => handleCopy(item.id, "ID")}
+                >
+                  Copy List ID
+                </Button>
+              </Space>
+            </div>
           )}
           <Tag color={item.is_public ? "success" : "error"}>
             {item.is_public ? "Public" : "Private"}

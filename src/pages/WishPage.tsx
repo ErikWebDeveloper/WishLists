@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
-import { Layout, Drawer, Form, FloatButton, Tooltip, message } from "antd";
+
+// Components
+import { Drawer, Form, FloatButton, Tooltip, message } from "antd";
 import { GiftOutlined } from "@ant-design/icons";
-import { useWishes } from "../hooks/useWishes";
 import WishForm from "../components/WishForm";
 import WishTable from "../components/WishTable";
+
+// Hooks
+import { useWishes } from "../hooks/useWishes";
 
 export default function WishPage() {
   const {
@@ -71,7 +75,7 @@ export default function WishPage() {
   }, [error]);
 
   return (
-    <Layout style={{ minHeight: "100vh", paddingTop: "1rem" }}>
+    <>
       {contextHolder}
 
       {/** Float Button Create List */}
@@ -111,6 +115,6 @@ export default function WishPage() {
           isEdit={isEdit}
         />
       </Drawer>
-    </Layout>
+    </>
   );
 }
