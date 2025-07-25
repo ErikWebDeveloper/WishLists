@@ -171,27 +171,18 @@ export class SupabaseService implements ILocalStorageService {
     if (error) throw new Error(error.message);
   }
 
-  async getSavedLists(): Promise<SavedListsDetails[]> {
+  async getSavedLists(): Promise<SavedListView[]> {
     const { data: userData, error: userError } = await supabase.auth.getUser();
     if (userError || !userData.user) throw new Error("User not authenticated");
 
     const { data, error } = await supabase
-      .from("saved_lists")
-      .select(
-        `
-    saved_at,
-    list_id,
-    user_id,
-    lists (
-      id,
-      name,
-      user_id
-    )
-  `
-      )
+      .from("saved_lists_view")
+      .select("*")
       .eq("user_id", userData.user.id);
 
     if (error) throw new Error(error.message);
+
+    console.log(data);
 
     return data;
   }

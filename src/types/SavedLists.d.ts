@@ -5,14 +5,7 @@ interface SavedList {
   created_at?: string; // Timestamp opcional
 }
 
-interface SavedListsDetails {
-  saved_at: any;
+interface SavedListView {
   list_id: string;
-  user_id: string;
-  lists: {
-    id: string;
-    name: string;
-    user_id: string;
-  }[];
+  list_name: string;
 }
-[] | null;

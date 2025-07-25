@@ -5,7 +5,7 @@ import delay from "../utils/delay";
 const DELAY_TIME = 600;
 
 export function useSavedLists() {
-  const [savedLists, setSavedLists] = useState<SavedListsDetails[]>([]);
+  const [savedLists, setSavedLists] = useState<SavedListView[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [loadingCRUD, setLoadingCRUD] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
