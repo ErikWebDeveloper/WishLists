@@ -146,4 +146,53 @@ export class SupabaseService implements ILocalStorageService {
 
     if (error) throw new Error(error.message);
   }
+
+  async saveList(listId: string): Promise<void> {
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    if (userError || !userData.user) throw new Error("User not authenticated");
+
+    const { error } = await supabase
+      .from("saved_lists")
+      .insert([{ user_id: userData.user.id, list_id: listId }]);
+
+    if (error) throw new Error(error.message);
+  }
+
+  async unsaveList(listId: string): Promise<void> {
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    if (userError || !userData.user) throw new Error("User not authenticated");
+
+    const { error } = await supabase
+      .from("saved_lists")
+      .delete()
+      .eq("user_id", userData.user.id)
+      .eq("list_id", listId);
+
+    if (error) throw new Error(error.message);
+  }
+
+  async getSavedLists(): Promise<SavedListsDetails[]> {
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    if (userError || !userData.user) throw new Error("User not authenticated");
+
+    const { data, error } = await supabase
+      .from("saved_lists")
+      .select(
+        `
+    saved_at,
+    list_id,
+    user_id,
+    lists (
+      id,
+      name,
+      user_id
+    )
+  `
+      )
+      .eq("user_id", userData.user.id);
+
+    if (error) throw new Error(error.message);
+
+    return data;
+  }
 }
