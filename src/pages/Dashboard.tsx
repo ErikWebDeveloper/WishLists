@@ -39,7 +39,7 @@ export default function Dashboard() {
     setIsModalOpen(false);
   };
   return (
-    <Layout style={{ minHeight: "100vh", padding: "1rem" }}>
+    <Layout>
       <Modal
         title="Add a public list"
         closable={{ "aria-label": "Custom Close Button" }}
@@ -90,7 +90,6 @@ export default function Dashboard() {
             {!loading &&
               lists.length > 0 &&
               lists.map((list) => (
-                    
                 <div key={list.id}>
                   <Link
                     to={`${URL_LIST}/${list.id}`}
@@ -120,10 +119,7 @@ export default function Dashboard() {
           >
             {!savedListsLoading && savedLists.length > 0 ? (
               savedLists.map((list) => (
-                <div
-                  key={list.list_id}
-                  className="flex items-center mb-3"
-                >
+                <div key={list.list_id} className="flex items-center mb-3">
                   <Link
                     to={`${URL_LIST_SHARED}/${list.list_id}`}
                     className="flex-1 !text-white hover:!text-gray-300 opacity-75"

@@ -29,6 +29,7 @@ createRoot(document.getElementById("root")!).render(
       algorithm: theme.darkAlgorithm,
       components: {
         Rate: { starColor: "#c53232" },
+        Layout: { headerBg : "#000", headerPadding: 0},
       },
     }}
   >

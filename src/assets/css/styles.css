@@ -5,6 +5,9 @@
   max-width: 1000px;
 }
 
+body{
+  background-color: #000;
+}
 .ant-list-item-action {
   text-align: end !important;
 }

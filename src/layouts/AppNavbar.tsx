@@ -1,49 +1,21 @@
-import { Layout, Menu, Avatar, Dropdown, Typography } from "antd";
-import { UserOutlined, LogoutOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
-import supabase from "../utils/supabase";
+import { Button } from "antd";
+import { LogoutOutlined } from "@ant-design/icons";
 
-const { Header } = Layout;
-const { Title } = Typography;
-
-export default function AppNavbar() {
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    navigate("/login");
-  };
-
-  const menu = (
-    <Menu>
-      <Menu.Item key="logout" icon={<LogoutOutlined />} onClick={handleLogout}>
-        Logout
-      </Menu.Item>
-    </Menu>
-  );
-
+export default function Navbar() {
   return (
-    <Header
-      style={{
-        background: "#000",
-        padding: "0 1rem",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        boxShadow: "0 1px 2px #333",
-      }}
-    >
-      <Title level={4} style={{ margin: 0 }}>
-        🎁 WishList App
-      </Title>
+    <nav className="max-w-[1000px] w-full mx-auto shadow flex items-center justify-between">
+      {/* App Name */}
+      <div className="text-xl font-semibold">Wish List</div>
 
-      <Dropdown overlay={menu} placement="bottomRight" arrow>
-        <Avatar
-          size="large"
-          icon={<UserOutlined />}
-          style={{ cursor: "pointer", backgroundColor: "#393939ff" }}
-        />
-      </Dropdown>
-    </Header>
+      {/* Logout Button */}
+      <Button
+        variant="filled"
+        color="default"
+        icon={<LogoutOutlined />}
+        //onClick={onLogout}
+      >
+        Logout
+      </Button>
+    </nav>
   );
 }
