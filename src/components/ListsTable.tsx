@@ -6,13 +6,14 @@ import {
   DatabaseOutlined,
   FormOutlined,
   ShareAltOutlined,
+  ArrowLeftOutlined,
 } from "@ant-design/icons";
 import { Tag, Tooltip, Flex, Button, List, Typography } from "antd";
 import { getDomain } from "../utils/domain";
 
 const URL = "/list";
 const URL_SHARED = "/shared";
-
+const URL_HOME_APP = "/dashboard";
 
 const actionStyle = { opacity: 0.7 };
 
@@ -38,8 +39,18 @@ export default function ListTable({
       loading={loading}
       header={
         <header style={{ display: "flex", alignItems: "center", opacity: 0.5 }}>
-          <Typography.Title style={{ flex: 1 }} level={2}>
-            Your wish lists
+          <Typography.Title
+            style={{ flex: 1, display: "flex", alignItems: "center" }}
+            level={2}
+          >
+            <Button
+              icon={<ArrowLeftOutlined />}
+              style={{ marginRight: "1rem", aspectRatio: "1/1" }}
+              onClick={() => {
+                navigate(URL_HOME_APP);
+              }}
+            />{" "}
+            {!loading ? "Your wish lists" : "Loading ..."}
           </Typography.Title>
 
           <Tag>{data.length}</Tag>
@@ -96,7 +107,12 @@ export default function ListTable({
         >
           <List.Item.Meta
             title={
-              <Flex align="center">
+              <Flex
+                align="center"
+                onClick={() => {
+                  navigate(`${URL}/${item.id}`);
+                }}
+              >
                 <Typography.Title level={3} style={{ flex: 1 }}>
                   {item.name}
                 </Typography.Title>

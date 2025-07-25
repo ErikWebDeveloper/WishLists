@@ -21,7 +21,7 @@ type Props = {
   onEdit: (wish: Wish) => void;
 };
 
-const URL_HOME_APP = "/dashboard";
+const URL_HOME_APP = "/list";
 export default function WishTable({
   loading,
   loadingCRUD,

@@ -122,7 +122,7 @@ export default function Dashboard() {
                     to={`${URL_LIST_SHARED}/${list.list_id}`}
                     className="flex-1 hover:underline"
                   >
-                    {list.list_id}
+                    {JSON.stringify(list.lists)}
                   </Link>
                   <Button
                     loading={CRUDSavedList}
