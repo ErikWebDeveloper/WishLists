@@ -7,9 +7,13 @@ import PublicRoute from "./routes/PublicRoute";
 // Pages
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/Login";
-import ListPage from "./pages/ListPage";
-import WishPage from "./pages/WishPage";
+//import ListPage from "./pages/ListPage";
+//import WishPage from "./pages/WishPage";
 import SharedWishPage from "./pages/SharedLists";
+import Dashboard from "./pages/Dashboard";
+
+import ListPage from "./pages/ListPageAb";
+import WishPage from "./pages/WishPageAb";
 
 export default function AppRouter() {
   return (
@@ -26,6 +30,16 @@ export default function AppRouter() {
               </PublicRoute>
             }
           />
+
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+
           <Route
             path="list"
             element={
@@ -34,6 +48,7 @@ export default function AppRouter() {
               </ProtectedRoute>
             }
           />
+
           <Route
             path="/list/:listId"
             element={
