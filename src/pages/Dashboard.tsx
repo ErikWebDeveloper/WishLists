@@ -73,7 +73,7 @@ export default function Dashboard() {
         </Form>
       </Modal>
       <main className="list-section">
-        <Typography.Title level={2} className="opacity-50">
+        <Typography.Title level={2} className="opacity-75">
           Welcome back!
         </Typography.Title>
         <section className="flex flex-col md:flex-row gap-3">
@@ -90,9 +90,15 @@ export default function Dashboard() {
             {!loading &&
               lists.length > 0 &&
               lists.map((list) => (
-                <Link key={list.id} to={`${URL_LIST}/${list.id}`}>
-                  {list.name}
-                </Link>
+                    
+                <div key={list.id}>
+                  <Link
+                    to={`${URL_LIST}/${list.id}`}
+                    className="!text-white hover:!text-gray-300 opacity-75"
+                  >
+                    {list.name}
+                  </Link>
+                </div>
               ))}
           </Card>
 
@@ -116,11 +122,11 @@ export default function Dashboard() {
               savedLists.map((list) => (
                 <div
                   key={list.list_id}
-                  className="flex items-center gap-2 py-1"
+                  className="flex items-center mb-3"
                 >
                   <Link
                     to={`${URL_LIST_SHARED}/${list.list_id}`}
-                    className="flex-1 hover:underline"
+                    className="flex-1 !text-white hover:!text-gray-300 opacity-75"
                   >
                     {list.list_name}
                   </Link>
