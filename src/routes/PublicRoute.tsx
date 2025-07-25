@@ -8,5 +8,5 @@ export default function PublicRoute({ children }: { children: JSX.Element }) {
 
   if (loading) return null;
 
-  return session ? <Navigate to="/list" replace /> : children;
+  return session ? <Navigate to="/dashboard" replace /> : children;
 }
