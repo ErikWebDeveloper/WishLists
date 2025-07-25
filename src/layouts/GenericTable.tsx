@@ -1,4 +1,4 @@
-import { List, Typography, Tag, Button, Tooltip } from "antd";
+/*import { List, Typography, Tag, Button, Tooltip } from "antd";
 import { ArrowLeftOutlined, DatabaseOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import React from "react";
@@ -96,3 +96,4 @@ export default function GenericTable<T>({
     />
   );
 }
+*/
